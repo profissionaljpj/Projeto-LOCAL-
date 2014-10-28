@@ -42,10 +42,10 @@ namespace DatabasePocketQueue
                 //EstadoSenha
                 EstadoSenha nova, chamada, emAtendimento, fechada;
 
-                nova = new EstadoSenha("Nova");
-                chamada = new EstadoSenha("Chamada");
-                emAtendimento = new EstadoSenha("Em Atendimento");
-                fechada = new EstadoSenha("Fechada");
+                nova = new EstadoSenha(1, "Nova");
+                chamada = new EstadoSenha(2, "Chamada");
+                emAtendimento = new EstadoSenha(3, "Em Atendimento");
+                fechada = new EstadoSenha(4, "Fechada");
 
                 IRepositorioEstadoSenha iRES = new RepositorioEstadoSenha();
 
@@ -53,6 +53,16 @@ namespace DatabasePocketQueue
                 iRES.InserirEstadoSenha(chamada);
                 iRES.InserirEstadoSenha(emAtendimento);
                 iRES.InserirEstadoSenha(fechada);
+
+                //TipoSenha
+                TipoSenha normal, preferencial;
+                normal = new TipoSenha(1, "Normal");
+                preferencial = new TipoSenha(2, "Preferencial");
+
+                IRepositorioTipoSenha iRTS = new RepositorioTipoSenha();
+
+                iRTS.InserirTipoSenha(normal);
+                iRTS.InserirTipoSenha(preferencial);
 
                 #endregion
 
@@ -62,9 +72,9 @@ namespace DatabasePocketQueue
                 RepositorioTipoUsuario RT = new RepositorioTipoUsuario();
                 TipoUsuario T = new TipoUsuario("A");
                 RT.InserirTipoUsuario(T);
-                Usuario A = new Usuario("A", "A", "A", "A", "A", "A", "A", "A", "A", "A", T.IDTipoUsuario);
+                Usuario A = new Usuario("A", "A", "A", "A", "A", "A", "A", "A", "A", "A", T);
                 R.InserirUsuario(A);
-                Usuario B = new Usuario("B", "B", "B", "B", "B", "B", "B", "B", "B", "B", T.IDTipoUsuario);
+                Usuario B = new Usuario("B", "B", "B", "B", "B", "B", "B", "B", "B", "B", T);
                 R.InserirUsuario(B);
 
                 //EndTesteUsuario

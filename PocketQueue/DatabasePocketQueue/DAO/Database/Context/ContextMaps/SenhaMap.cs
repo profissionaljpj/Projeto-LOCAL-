@@ -15,14 +15,20 @@ namespace DatabasePocketQueue.DAO.Database.Context.ContextMaps
             //Chave Primária
             HasKey(s => s.IDSenha);
 
+            HasRequired<TipoSenha>(ts => ts.TipoSenha).WithMany(s => s.Senhas)
+                .HasForeignKey(s => s.IDTipoSenha).WillCascadeOnDelete();
+
+            /*
             //Chave Estrangeira
-            HasRequired(s => s.TipoSenha);
+            HasRequired(s => s.EstadoSenha).WithRequiredDependent();*/
 
             //Chave Estrangeira de Usuario
-            HasRequired(s => s.Usuario);
+            HasRequired<Usuario>(s => s.Usuario).WithMany(s => s.Senhas)
+                .HasForeignKey(s => s.IDUsuario).WillCascadeOnDelete();
 
             //Chave Estrangeira
-            HasRequired(s => s.EstadoSenha);
+            HasRequired<EstadoSenha>(s => s.EstadoSenha).WithMany(s => s.Senhas)
+                .HasForeignKey(s => s.IDEstadoSenha).WillCascadeOnDelete();
         }
     }
 }

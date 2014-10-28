@@ -15,8 +15,9 @@ namespace DatabasePocketQueue.DAO.Entidades
     public class TipoSenha
     {
         public TipoSenha() { }
-        public TipoSenha(string descricao)
+        public TipoSenha(int idTipoSenha = 1, string descricao = "Normal")
         {
+            this.IDTipoSenha = idTipoSenha;
             this.Descricao = descricao;
         }
         /// <summary>
@@ -27,5 +28,6 @@ namespace DatabasePocketQueue.DAO.Entidades
         /// Descrição da senha.
         /// </summary>
         public string Descricao { get; set; }
+        public virtual ICollection<Senha> Senhas { get; set; }
     }
 }

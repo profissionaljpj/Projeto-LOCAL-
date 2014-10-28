@@ -27,5 +27,6 @@ namespace DatabasePocketQueue.DAO.Entidades
         /// Nome da 'patente' do usuário.
         /// </summary>
         public string DescricaoUsuario { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

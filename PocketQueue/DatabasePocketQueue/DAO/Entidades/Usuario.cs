@@ -15,7 +15,7 @@ namespace DatabasePocketQueue.DAO.Entidades
         public Usuario() { }
         public Usuario(string nome, string sobreNome, string cpf, string rg,
             string tipoResidencia, string endereco, string complemento,
-            string numero, string login, string senha, int idTipoUsuario)
+            string numero, string login, string senha, TipoUsuario tipo)
         {
             this.Nome = nome;
             this.SobreNome = sobreNome;
@@ -27,7 +27,7 @@ namespace DatabasePocketQueue.DAO.Entidades
             this.Numero = numero;
             this.Login = login;
             this.Senha = senha;
-            this.IDTipoUsuario = idTipoUsuario;
+            this.TipoUsuario = tipo;
         }
 
         /// <summary>
@@ -77,14 +77,11 @@ namespace DatabasePocketQueue.DAO.Entidades
         /// <summary>
         /// Chave estrangeira TipoUsuario
         /// </summary>
-        public TipoUsuario TipoUsuario { get; set; }
-        /// <summary>
-        /// ID da Chave Estrangeira
-        /// </summary>
         public int IDTipoUsuario { get; set; }
+        public virtual TipoUsuario TipoUsuario { get; set; }
         /// <summary>
         /// Lista de chamados que o Usuário atendeu.
         /// </summary>
-        public List<Senha> Senhas { get; set; }
+        public virtual ICollection<Senha> Senhas { get; set; }
     }
 }

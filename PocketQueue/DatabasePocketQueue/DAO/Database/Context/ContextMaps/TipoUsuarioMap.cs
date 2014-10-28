@@ -15,5 +15,6 @@ namespace DatabasePocketQueue.DAO.Database.Context.ContextMaps
             //Chave Primária
             HasKey(t => t.IDTipoUsuario);
         }
+
     }
 }

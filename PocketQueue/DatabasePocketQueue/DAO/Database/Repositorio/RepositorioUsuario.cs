@@ -38,7 +38,7 @@ namespace DatabasePocketQueue.DAO.Database.Repositorio
             if (tipoUsuario == null) return null;
             using (var db = new Context.Context())
             {
-                return db.Usuario.Include(u => u.TipoUsuario).Where(u => u.IDTipoUsuario == tipoUsuario.IDTipoUsuario).ToList();
+                return db.Usuario.Include(u => u.TipoUsuario).Where(u => u.IDUsuario == tipoUsuario.IDTipoUsuario).ToList();
             }
         }
         public bool AlterarUsuario(Usuario usuario)

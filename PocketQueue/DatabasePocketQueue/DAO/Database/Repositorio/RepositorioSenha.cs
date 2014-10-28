@@ -3,6 +3,7 @@ using DatabasePocketQueue.DAO.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -57,7 +58,7 @@ namespace DatabasePocketQueue.DAO.Database.Repositorio
             {
                 return db.Senha.Include(s => s.EstadoSenha).
                     OrderByDescending(s => s.IDSenha).
-                    FirstOrDefault(s => s.EstadoSenha.IDEstado == 1);
+                    FirstOrDefault(s => s.EstadoSenha.IDEstadoSenha == 1);
             }
         }
     }

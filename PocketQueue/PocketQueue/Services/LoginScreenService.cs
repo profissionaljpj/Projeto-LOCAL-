@@ -19,7 +19,7 @@ namespace PocketQueue.Services
 
             foreach(Usuario u in usuarioList) {
                 if (u.Login.Equals(usuario) && u.Senha.Equals(senha)){
-                    return u;
+                    return Constantes.UsuarioLogado = u;
                 }
             }
 

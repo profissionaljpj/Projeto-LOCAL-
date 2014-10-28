@@ -13,7 +13,7 @@ namespace DatabasePocketQueue.DAO.Database.Context.ContextMaps
         public TipoSenhaMap()
         {
             //Chave Primária
-            HasKey(ts => ts.IDTipoSenha);
+            HasKey(ts => ts.IDTipoSenha).HasMany(ts => ts.Senhas);
         }
     }
 }

@@ -17,23 +17,22 @@ namespace DatabasePocketQueue.DAO.Entidades
         {
             this.Criacao = DateTime.Now;
         }
-        public Senha(int idTipoSenha, int guiche)
+        public Senha(TipoSenha tipoSenha, EstadoSenha estadoSenha)
         {
-            this.IDTipoSenha = idTipoSenha;
+            //DataCriacao
             this.Criacao = DateTime.Now;
-            this.Guiche = guiche;
-            this.IDEstadoSenha = 1;
-            this.EstadoSenha = new EstadoSenha("Nova");
+
+            //TipoSenha
+            this.TipoSenha = tipoSenha;
+
+            //EstadoSenha
+            this.EstadoSenha = estadoSenha;
         }
 
         /// <summary>
         /// ID da senha que será gerada automaticamente pelo banco.
         /// </summary>
         public int IDSenha { get; set; }
-        /// <summary>
-        /// Tipo da senha. Ex: Gestante, Idoso.
-        /// </summary>
-        public int IDTipoSenha { get; set; }
         /// <summary>
         /// Data em que a senha foi gerada.
         /// </summary>
@@ -47,30 +46,27 @@ namespace DatabasePocketQueue.DAO.Entidades
         /// </summary>
         public DateTime? Resolvido { get; set; }
         /// <summary>
-        /// Chave Estrangeira IDTipoSenha, Referencia TipoSenha.
-        /// </summary>
-        public TipoSenha TipoSenha { get; set; }
-        /// <summary>
-        /// Usuario responsável pela solução da Senha.
-        /// </summary>
-        public Usuario Usuario { get; set; }
-        /// <summary>
-        /// ID do usuário.
-        /// </summary>
-        public int IDUsuario { get; set; }
-        /// <summary>
         /// Guiche onde a senha foi atendida
         /// </summary>
         public int Guiche { get; set; }
+
+        #region Chaves Estrangeiras
         /// <summary>
-        /// ID do estado da senha (atendido, nova)
+        /// Chave Estrangeira IDTipoSenha, Referencia TipoSenha.
+        /// </summary>
+        public int IDTipoSenha { get; set; }
+        public virtual TipoSenha TipoSenha { get; set; }
+        /// <summary>
+        /// Usuário.
+        /// </summary>
+        public int IDUsuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        /// <summary>
+        /// Estado da senha (atendido, nova)
         /// </summary>
         public int IDEstadoSenha { get; set; }
-        /// <summary>
-        /// O estado da senha.
-        /// </summary>
-        public EstadoSenha EstadoSenha { get; set; }
-
+        public virtual EstadoSenha EstadoSenha { get; set; }
+        #endregion
 
     }
 }

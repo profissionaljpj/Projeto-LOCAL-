@@ -21,6 +21,7 @@ namespace PocketQueue
     {
         WindowsMediaPlayer mediaPlayer;
         EmissaoSenhasService eSenhasService;
+
         public EmissaoSenhas()
         {
             InitializeComponent();
@@ -33,11 +34,19 @@ namespace PocketQueue
         private void botaoSenha_Click(object sender, EventArgs e)
         {
             Senha senha = eSenhasService.CriarSenha(ETipoSenha.Normal);
+            if (senha != null) MessageBox.Show("Senha Emitida Com Sucesso!");
         }
 
         private void botaoSenhaPreferencial_Click(object sender, EventArgs e)
         {
-            Senha senha = eSenhasService.CriarSenha(ETipoSenha.Preferencial);
+            try
+            {
+                Senha senha = eSenhasService.CriarSenha(ETipoSenha.Preferencial);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString());
+            }
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)

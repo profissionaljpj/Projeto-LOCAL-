@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Constantes.cs" />
     <Compile Include="Services\EmissaoSenhasService.cs" />
     <Compile Include="Services\LoginScreenService.cs" />
     <EmbeddedResource Include="EmissaoSenhas.resx">
