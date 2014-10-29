@@ -29,7 +29,7 @@ namespace DatabasePocketQueue.DAO.Database.Repositorio
             if (senha == null) return false;
             using (var db = new Context.Context())
             {
-                db.Senha.Add(senha);
+                db.Entry(senha).State = EntityState.Added;
                 db.SaveChanges();
             }
             return true;

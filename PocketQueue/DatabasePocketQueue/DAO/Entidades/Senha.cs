@@ -17,16 +17,22 @@ namespace DatabasePocketQueue.DAO.Entidades
         {
             this.Criacao = DateTime.Now;
         }
-        public Senha(TipoSenha tipoSenha, EstadoSenha estadoSenha)
+        public Senha(TipoSenha tipoSenha, EstadoSenha estadoSenha, Usuario usuario)
         {
             //DataCriacao
             this.Criacao = DateTime.Now;
 
             //TipoSenha
             this.TipoSenha = tipoSenha;
+            this.IDTipoSenha = tipoSenha.IDTipoSenha;
 
             //EstadoSenha
             this.EstadoSenha = estadoSenha;
+            this.IDEstadoSenha = estadoSenha.IDEstadoSenha;
+
+             //Usuario
+            this.Usuario = usuario;
+            this.IDUsuario = usuario.IDUsuario;
         }
 
         /// <summary>

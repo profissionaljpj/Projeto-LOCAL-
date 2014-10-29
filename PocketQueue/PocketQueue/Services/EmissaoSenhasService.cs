@@ -29,7 +29,7 @@ namespace PocketQueue.Services
 
         public Senha CriarSenha(ETipoSenha tipoSenha)
         {
-            Senha senha = new Senha(new TipoSenha(1, "Normal"), new EstadoSenha(1,"Nova"));
+            Senha senha = new Senha(new TipoSenha(1, "Normal"), new EstadoSenha(1,"Nova"), Services.Constantes.UsuarioLogado);
             senha.Usuario = Constantes.UsuarioLogado;
             repSenha.InserirSenha(senha);
             return senha;
