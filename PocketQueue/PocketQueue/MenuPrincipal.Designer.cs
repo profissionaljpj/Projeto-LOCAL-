@@ -41,6 +41,7 @@
             this.botaoAdministracao.TabIndex = 0;
             this.botaoAdministracao.Text = "Painel de Administração";
             this.botaoAdministracao.UseVisualStyleBackColor = true;
+            this.botaoAdministracao.Click += new System.EventHandler(this.botaoAdministracao_Click);
             // 
             // botaoAtendentes
             // 
@@ -50,6 +51,7 @@
             this.botaoAtendentes.TabIndex = 1;
             this.botaoAtendentes.Text = "Painel de Atendente";
             this.botaoAtendentes.UseVisualStyleBackColor = true;
+            this.botaoAtendentes.Click += new System.EventHandler(this.botaoAtendentes_Click);
             // 
             // botaoEmitirSenhas
             // 

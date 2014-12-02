@@ -39,14 +39,8 @@ namespace PocketQueue
 
         private void botaoSenhaPreferencial_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Senha senha = eSenhasService.CriarSenha(ETipoSenha.Preferencial);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.InnerException.ToString());
-            }
+            Senha senha = eSenhasService.CriarSenha(ETipoSenha.Preferencial);
+            if (senha != null) MessageBox.Show("Senha Emitida Com Sucesso!");
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
@@ -54,16 +48,21 @@ namespace PocketQueue
             if (!eSenhasService.IsSenhaAtual() && eSenhasService.UltimaSenha != null)
             {
                 Senha senha = eSenhasService.UltimaSenha;
-                labelH8 = labelH7;
-                labelH7 = labelH6;
-                labelH6 = labelH5;
-                labelH5 = labelH4;
-                labelH4 = labelH3;
-                labelH3.Text = "S: " + labelSenhaAtual.Text + "G: " + labelGuicheAtual.Text;
                 labelSenhaAtual.Text = senha.IDSenha.ToString();
                 labelGuicheAtual.Text = senha.Guiche.ToString();
+                labelH8.Text = labelH7.Text;
+                labelH7.Text = labelH6.Text;
+                labelH6.Text = labelH5.Text;
+                labelH5.Text = labelH4.Text;
+                labelH4.Text = labelH3.Text;
+                labelH3.Text = "S: " + labelSenhaAtual.Text + " G: " + labelGuicheAtual.Text;
                 mediaPlayer.controls.play();
             }
+        }
+
+        private void EmissaoSenhas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

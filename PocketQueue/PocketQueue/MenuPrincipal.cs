@@ -28,7 +28,25 @@ namespace PocketQueue
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            this.Text = usuario.TipoUsuario.DescricaoUsuario;
+            botaoAdministracao.Enabled = false;
+            botaoAtendentes.Enabled = false;
+            botaoEmitirSenhas.Enabled = false;
+
+            this.Text = usuario.TipoUsuario;
+
+            if (usuario.TipoUsuario.Equals("Gerente"))
+            {
+                botaoAdministracao.Enabled = botaoAtendentes.Enabled = botaoEmitirSenhas.Enabled = true;
+            }
+
+            if (usuario.TipoUsuario.Equals("Atendente"))
+            {
+                botaoAtendentes.Enabled = true;
+            }
+
+            if (usuario.TipoUsuario.Equals("Monitor")){
+                botaoEmitirSenhas.Enabled = true;
+            }
         }
 
         private void botaoEmitirSenhas_Click(object sender, EventArgs e)
@@ -36,6 +54,22 @@ namespace PocketQueue
             this.Hide();
             EmissaoSenhas emissaoSenhas = new EmissaoSenhas();
             DialogResult dialogResult = emissaoSenhas.ShowDialog();
+            this.Show();
+        }
+
+        private void botaoAtendentes_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TelaAtendente tela = new TelaAtendente();
+            DialogResult dialogResult = tela.ShowDialog();
+            this.Show();
+        }
+
+        private void botaoAdministracao_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TelaCadastroUsuario tela = new TelaCadastroUsuario();
+            DialogResult dialogResult = tela.ShowDialog();
             this.Show();
         }
     }

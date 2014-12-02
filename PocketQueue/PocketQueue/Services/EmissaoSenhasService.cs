@@ -29,15 +29,20 @@ namespace PocketQueue.Services
 
         public Senha CriarSenha(ETipoSenha tipoSenha)
         {
-            Senha senha = new Senha(new TipoSenha(1, "Normal"), new EstadoSenha(1,"Nova"), Services.Constantes.UsuarioLogado);
-            senha.Usuario = Constantes.UsuarioLogado;
+            Senha senha = new Senha();
+            senha.Atendido = null;
+            senha.Criacao = DateTime.Now;
+            senha.Guiche = 0;
+            senha.TipoSenha = tipoSenha.ToString();
+            senha.IDUsuario = Constantes.UsuarioLogado.IDUsuario;
             repSenha.InserirSenha(senha);
+            senha = repSenha.BuscarSenha(senha);
             return senha;
         }
 
         public Senha UltimaSenhaChamada()
         {
-            return repSenha.ChamarSenha();
+            return repSenha.MostarProximaSenha();
         }
 
         public String CaminhoAudio(String complemento)

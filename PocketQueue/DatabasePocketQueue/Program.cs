@@ -1,13 +1,9 @@
-﻿using DatabasePocketQueue.DAO.Database.Context;
-using DatabasePocketQueue.DAO.Database.Factory;
+﻿using DatabasePocketQueue.DAO.Database.Factory;
 using DatabasePocketQueue.DAO.Database.IRepositorio;
 using DatabasePocketQueue.DAO.Database.Repositorio;
 using DatabasePocketQueue.DAO.Entidades;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabasePocketQueue
 {
@@ -15,14 +11,24 @@ namespace DatabasePocketQueue
     {
         static void Main(string[] args)
         {
+
             bool debug = true;
 
             if (debug)
             {
-                Console.WriteLine("Overriding Existing Database...");
-                Console.WriteLine((Database.OverrideExistingDatabase() ? "Success!" : "Failure..."));
+                /*
 
-                #region Povoamento Básico das Tabelas
+                TipoSenha TS = new TipoSenha();
+                RepositorioTipoSenha rs = new RepositorioTipoSenha();
+                rs.InserirTipoSenha(TS);
+                RepositorioSenha s = new RepositorioSenha();
+                Senha p = new Senha(TS.IDTipoSenha);
+                p.IDUsuario = B.IDUsuario;
+                s.InserirSenha(p);
+                Senha senha = new Senha();
+
+                List<Usuario> u = R.ListarUsuariosCompleto();
+                u.Add(null);
 
                 //TipoUsuario
                 TipoUsuario gerente, atendente, recepcionista, administrador;
@@ -42,10 +48,10 @@ namespace DatabasePocketQueue
                 //EstadoSenha
                 EstadoSenha nova, chamada, emAtendimento, fechada;
 
-                nova = new EstadoSenha(1, "Nova");
-                chamada = new EstadoSenha(2, "Chamada");
-                emAtendimento = new EstadoSenha(3, "Em Atendimento");
-                fechada = new EstadoSenha(4, "Fechada");
+                nova = new EstadoSenha("Nova");
+                chamada = new EstadoSenha("Chamada");
+                emAtendimento = new EstadoSenha("Em Atendimento");
+                fechada = new EstadoSenha("Fechada");
 
                 IRepositorioEstadoSenha iRES = new RepositorioEstadoSenha();
 
@@ -53,32 +59,38 @@ namespace DatabasePocketQueue
                 iRES.InserirEstadoSenha(chamada);
                 iRES.InserirEstadoSenha(emAtendimento);
                 iRES.InserirEstadoSenha(fechada);
-
-                //TipoSenha
-                TipoSenha normal, preferencial;
-                normal = new TipoSenha(1, "Normal");
-                preferencial = new TipoSenha(2, "Preferencial");
-
-                IRepositorioTipoSenha iRTS = new RepositorioTipoSenha();
-
-                iRTS.InserirTipoSenha(normal);
-                iRTS.InserirTipoSenha(preferencial);
-
-                #endregion
-
-                #region Teste Usuario
+                */
                 //Teste Usuario
                 RepositorioUsuario R = new RepositorioUsuario();
-                RepositorioTipoUsuario RT = new RepositorioTipoUsuario();
-                TipoUsuario T = new TipoUsuario("A");
-                RT.InserirTipoUsuario(T);
-                Usuario A = new Usuario("A", "A", "A", "A", "A", "A", "A", "A", "A", "A", T);
-                R.InserirUsuario(A);
-                Usuario B = new Usuario("B", "B", "B", "B", "B", "B", "B", "B", "B", "B", T);
-                R.InserirUsuario(B);
+                Usuario A = new Usuario();
+                Senha S = new Senha();
+
+                A = R.ListarUsuarios()[0];
+
+                RepositorioSenha RS = new RepositorioSenha();
+                S.Atendido = DateTime.Now;
+                S.Resolvido = null;
+                S.Guiche = 1;
+                S.EstadoSenha = "C";
+                S.IDUsuario = 1;
+                S.IDSenha = 1;
+                RS.AlterarSenha(S);
+
+                /*
+                Senha S = new Senha();
+                S.Atendido = DateTime.Now;
+                S.EstadoSenha = "Nova";
+                S.ListaUsuario = new List<Usuario>();
+                S.ListaUsuario.Add(A);
+                S.TipoSenha = "Preferencial";
+                RepositorioSenha RS = new RepositorioSenha();
+                RS.InserirSenha(S);
+                */
+                //Usuario B = new Usuario("B", "B", "B", "B", "B", "B", "B", "B", "B", "B", T.IDTipoUsuario);
+                //R.InserirUsuario(B);
 
                 //EndTesteUsuario
-                #endregion
+                
             }
         }
     }

@@ -47,7 +47,7 @@ namespace PocketQueue
             else
             {
                 progressLabel.Text = "Sucesso!";
-                MessageBox.Show("Bem vindo(a) " + usuario.Nome + " você está logado como: " + usuario.TipoUsuario.DescricaoUsuario);
+                MessageBox.Show("Bem vindo(a) " + usuario.Nome + " você está logado como: " + usuario.TipoUsuario);
                 this.Hide();
                 MenuPrincipal menu = new MenuPrincipal(usuario);
                 menu.ShowDialog();

@@ -69,5 +69,15 @@ namespace PocketQueue.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoPocketqueue2 {
+            get {
+                object obj = ResourceManager.GetObject("LogoPocketqueue2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
