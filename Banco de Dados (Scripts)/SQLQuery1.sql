@@ -23,4 +23,4 @@ create table Senha(
 	IDUsuario int foreign key references Usuario(IDUsuario),
 );
 
-insert into Usuario (Nome, Cpf, USogin, USenha, TipoUsuario) values ('Gerente', '123', 'Gerente', '123', 'Gerente');
+insert into Usuario (Nome, Cpf, ULogin, USenha, TipoUsuario) values ('Gerente', '123', 'Gerente', '123', 'Gerente');
